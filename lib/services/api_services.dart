@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../model/ref_jns_notif.dart';
+import '../model/RefJnsNotif.dart';
 
 class ApiService {
   final String baseUrl = 'http://172.120.40.160:8080/rest-api-tomcat/api/ref-notif';

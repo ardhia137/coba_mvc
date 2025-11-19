@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'view/ref_jns_notif_view.dart';
+import 'view/RefJnsNotifView.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: RefJnsNotifListView(),
+    home: RefJnsNotifView(),
   ));
 }

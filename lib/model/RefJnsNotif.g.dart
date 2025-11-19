@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'ref_jns_notif.dart';
+part of 'RefJnsNotif.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
