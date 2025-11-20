@@ -45,4 +45,16 @@ class RefJnsNotifCtrl extends ControllerMVC {
       return false;
     }
   }
+
+  Future<void> navigateAndRefresh(Widget page) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => page),
+    );
+
+    if (result == true) {
+      await loadRefJnsNotifs();
+      setState(() {});
+    }
+  }
 }

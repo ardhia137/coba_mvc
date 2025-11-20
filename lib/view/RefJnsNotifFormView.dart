@@ -19,14 +19,14 @@ class RefJnsNotifFormViewState extends StateMVC<RefJnsNotifFormView> {
     this.con = controller as RefJnsNotifFormCtrl;
   }
 
-  final _ketCtrl = TextEditingController();
+  final ketCtrl = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     con.context = context;
     if (widget.refJnsNotif != null) {
-      _ketCtrl.text = widget.refJnsNotif!.ket ?? "";
+      ketCtrl.text = widget.refJnsNotif!.ket ?? "";
     }
     Timer(const Duration(milliseconds: 100), () {
       con.view = this;
@@ -48,12 +48,12 @@ class RefJnsNotifFormViewState extends StateMVC<RefJnsNotifFormView> {
         child: Column(
           children: [
             TextField(
-              controller: _ketCtrl,
+              controller: ketCtrl,
               decoration: InputDecoration(labelText: "Ket"),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () => _save(),
+              onPressed: () => con.save(),
               child: Text("Save"),
             ),
           ],
@@ -62,32 +62,5 @@ class RefJnsNotifFormViewState extends StateMVC<RefJnsNotifFormView> {
     );
   }
 
-
-  void _save() async {
-    final ket = _ketCtrl.text.trim();
-
-    bool success = false;
-
-    if (widget.refJnsNotif == null) {
-      success = await con.addRefJnsNotif(
-        RefJnsNotif(kdJnsNotif: null, ket: ket),
-      );
-    } else {
-      success = await con.editRefJnsNotif(
-        RefJnsNotif(
-          kdJnsNotif: widget.refJnsNotif!.kdJnsNotif,
-          ket: ket,
-        ),
-      );
-    }
-    if (!mounted) return;
-    if (success) {
-      Navigator.pop(context, true);
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Gagal menyimpan")),
-      );
-    }
-  }
 }
 

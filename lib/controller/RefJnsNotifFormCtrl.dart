@@ -33,4 +33,31 @@ class RefJnsNotifFormCtrl extends ControllerMVC {
       return false;
     }
   }
+  
+  void save() async {
+    String ket = _view.ketCtrl.text;
+
+    RefJnsNotif refJnsNotif = RefJnsNotif(
+      ket: ket,
+    );
+
+    bool success;
+    if (_view.widget.refJnsNotif == null) {
+      success = await addRefJnsNotif(refJnsNotif);
+    } else {
+      refJnsNotif.kdJnsNotif = _view.widget.refJnsNotif!.kdJnsNotif;
+      success = await editRefJnsNotif(refJnsNotif);
+    }
+
+    if (success) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('RefJnsNotif saved successfully')),
+      );
+      Navigator.of(context).pop(true);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Failed to save RefJnsNotif')),
+      );
+    }
+  }
 }

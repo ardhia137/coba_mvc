@@ -28,17 +28,7 @@ class RefJnsNotifViewState extends StateMVC<RefJnsNotifView> {
     });
   }
 
-  Future<void> _navigateAndRefresh(Widget page) async {
-    final result = await Navigator.push(
-      context,
-      MaterialPageRoute(builder: (_) => page),
-    );
-
-    if (result == true) {
-      await con.loadRefJnsNotifs();
-      setState(() {});
-    }
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +38,7 @@ class RefJnsNotifViewState extends StateMVC<RefJnsNotifView> {
       appBar: AppBar(title: Text("RefJnsNotif CRUD")),
 
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _navigateAndRefresh(RefJnsNotifFormView()),
+        onPressed: () => con.navigateAndRefresh(RefJnsNotifFormView()),
         child: Icon(Icons.add),
       ),
 
@@ -76,7 +66,7 @@ class RefJnsNotifViewState extends StateMVC<RefJnsNotifView> {
                     children: [
                       IconButton(
                         icon: Icon(Icons.edit),
-                        onPressed: () => _navigateAndRefresh(
+                        onPressed: () => con.navigateAndRefresh(
                           RefJnsNotifFormView(refJnsNotif: p),
                         ),
                       ),
@@ -102,3 +92,4 @@ class RefJnsNotifViewState extends StateMVC<RefJnsNotifView> {
     );
   }
 }
+

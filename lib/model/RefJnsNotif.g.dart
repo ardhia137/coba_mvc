@@ -13,3 +13,5 @@ RefJnsNotif _$RefJnsNotifFromJson(Map<String, dynamic> json) => RefJnsNotif(
 
 Map<String, dynamic> _$RefJnsNotifToJson(RefJnsNotif instance) =>
     <String, dynamic>{'kdJnsNotif': instance.kdJnsNotif, 'ket': instance.ket};
+
+
